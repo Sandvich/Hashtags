@@ -5,7 +5,11 @@ This program searches the given text files and:
 - Lists the sentences in which they've been found
 
 ## Usage
-TODO
+Run:
+```bash
+./hashtagGen.py
+```
+No parameters are required, though if this were reused to use different sources, some optional parameters would be added.
 
 ## Output
 TODO

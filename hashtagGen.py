@@ -1,23 +1,17 @@
 import nltk
 import os
-
-
-def copy_contents(files):
-    contents = {}
-    for name in files:
-        f = open(name,'r')
-        contents[name] = f.readlines()
-        f.close()
-    return contents
+from string_input import txt_file_import
 
 
 def main():
-    txt_files = [ name for name in os.listdir(os.curdir) if (os.path.isfile(name) and name.split('.')[-1] == "txt") ]
-    if "requirements.txt" in txt_files:
-        txt_files.remove("requirements.txt")
-
-    contents = copy_contents(txt_files)
+    contents = txt_file_import()
     print(contents.keys())
+
+    # Count the frequency of each word that appears in the files
+    words = {}
+
+    # Select only the top 5%
+    # For each word in this list, do some stuff
 
 
 if __name__ == "__main__":
