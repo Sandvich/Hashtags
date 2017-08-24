@@ -4,6 +4,20 @@ This program searches the given text files and:
 - Lists the files in which they've been found
 - Lists the sentences in which they've been found
 
+## Setup
+Note: this requires python 3.x to run.
+Install requirements:
+```bash
+pip -r requirements.txt
+```
+
+Install nltk components (in a python shell):
+```python
+import nltk
+nltk.download()
+```
+Select the brown corpus and the punkt tokeniser module.
+
 ## Usage
 Run:
 ```bash

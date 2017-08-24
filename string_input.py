@@ -1,4 +1,4 @@
-import os
+import os, string
 
 
 def txt_file_import():
@@ -8,10 +8,13 @@ def txt_file_import():
     if "requirements.txt" in txt_files:
         txt_files.remove("requirements.txt")
 
-    # Copy the contents into a dictionary (keys being the file name)
+    # Copy the contents into a dictionary (keys being the file name), removing punctuation (other than -) and setting
+    # all the text to lowercase
     contents = {}
+    translate_table = {ord(char): None for char in string.punctuation}
+    translate_table['-']='-'
     for name in txt_files:
         f = open(name,'r')
-        contents[name] = f.readlines()
+        contents[name] = f.read().translate(translate_table).lower()
         f.close()
     return contents

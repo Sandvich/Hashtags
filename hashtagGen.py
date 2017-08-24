@@ -6,12 +6,9 @@ def main():
     contents = txt_file_import()
     print(contents.keys())
 
-    # Count the frequency of each word that appears in the files
-    frequencies = word_frequencies(contents)
-
-    # Select only the top 1%
-    frequencies = top_frequencies(frequencies, percentage=1)
-    print("Final frequency graph:\n" + str(frequencies))
+    # Count the frequency of each word that appears in the files, and select the top 5
+    top =top_frequencies(word_frequencies(contents), number=5)
+    print("Final frequency graph:\n" + str(top))
 
     # For each word in this list, do some stuff
 

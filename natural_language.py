@@ -6,22 +6,28 @@ from nltk.tokenize import ToktokTokenizer
 import math
 
 
-def top_frequencies(frequencies, percentage=1):
-    # Find out how frequently a word should come up to be included
-    full = sorted(frequencies.values(), reverse=True)
-    frequency = len(full) * (percentage/100)
-    print("Top %age only contains words that occurred " + str(math.ceil(frequency)) + " times or more.")
+def top_frequencies(frequencies, number=None, percentage=None):
+    """
+    Find the x most common words where x is either a fixed number or a percentage of the total words.
+    If percentage is set to an integer or float, returns the top p% of words and how often they occur.
+    If percentage is not set to an integer or float and number is set to an integer, returns the top n words and how
+    often they occur.
+    """
 
-    # If a word comes up this amount of times or more, add it to a new dictionary
-    top = {}
-    for key in frequencies.keys():
-        if frequencies[key] >= frequency:
-            top[key] = frequencies[key]
+    words = sorted(frequencies, reverse=True, key=frequencies.__getitem__)
+    if type(percentage) in (float, int):
+        number = math.ceil(len(frequencies)*percentage/100)
+    elif type(number) is int:
+        pass
+    else:
+        raise ValueError("Either number or percentage must be provided!")
 
+    words = words[:number]
+    top = {word:frequencies[word] for word in words}
     return top
 
 
-def word_frequencies(contents, percent=100):
+def word_frequencies(contents):
     toktok = ToktokTokenizer()
     string_corpus = brown.raw()
 
