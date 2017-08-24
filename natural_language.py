@@ -3,7 +3,7 @@ from itertools import chain
 from nltk.corpus import brown
 from nltk import sent_tokenize
 from nltk.tokenize import ToktokTokenizer
-import math
+import math, string
 
 
 def top_frequencies(frequencies, number=None, percentage=None):
@@ -45,13 +45,19 @@ def word_frequencies(contents):
     keys = set(keys)
 
     # Build combined frequency dict
+    # Tuple of identifiers for connectives and other common words
+    unwanted = ('at', 'to', 'in', 'ma', 'bez', 'ppss', 'pp$', 'dt', 'bedz', 'hv', 'cc', 'cs', 'hvd', 'wdt', '*', 'bed',
+                'ber', 'be', 'np$', 'ppo', 'pps', 'abn', 'cd', 'md', 'ben', 'ben', 'wps', 'vbd', 'jj', 'rb', 'do', 'ql',
+                'dts', 'rp', 'in-tl', 'ex', 'i', 'dti', 'dod', 'wrb', 'hvz', 'nn$')
+    # This is far from the best way to do this, but I couldn't find the documentation for these identifiers
     frequencies = {}
     for key in keys:
         total = 0
-        for sublist in list:
-            if key in sublist.keys():
-                total += sublist[key]
-        frequencies[key] = total
-    print("Total words: " + str(len(frequencies.keys())))
+        if (key[0] not in string.punctuation) and (key.split('/')[-1] not in unwanted):  # Gets rid of unwanted tokens
+            for sublist in list:
+                if key in sublist.keys():
+                    total += sublist[key]
+            frequencies[key.split('/')[0].lower()] = total
+    print("Total words (that we care about): " + str(len(frequencies.keys())))
 
     return frequencies

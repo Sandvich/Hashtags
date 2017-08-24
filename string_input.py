@@ -11,10 +11,8 @@ def txt_file_import():
     # Copy the contents into a dictionary (keys being the file name), removing punctuation (other than -) and setting
     # all the text to lowercase
     contents = {}
-    translate_table = {ord(char): None for char in string.punctuation}
-    translate_table['-']='-'
     for name in txt_files:
         f = open(name,'r')
-        contents[name] = f.read().translate(translate_table).lower()
+        contents[name] = f.read()
         f.close()
     return contents
