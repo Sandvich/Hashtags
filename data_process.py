@@ -13,6 +13,8 @@ def files_word(file_contents, to_search):
         for filename in sorted(file_contents.keys()):
             if pattern.search(file_contents[filename].lower()) is not None:
                 files[-1].append(filename)
+        item = list_to_string(files.pop())
+        files.append(item)
 
     return files
 
@@ -32,5 +34,15 @@ def sentences_word(string_contents, to_search):
             for sentence in string_contents[document]:
                 if pattern.search(sentence) is not None:
                     sentences[-1].append(sentence)
+        item = list_to_string(sentences.pop())
+        sentences.append(item)
 
     return sentences
+
+
+def list_to_string(list: list):
+    string = ""
+    for item in list:
+        string += str(item) + "\n"
+    string = string[:-1]
+    return string

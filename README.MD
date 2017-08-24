@@ -16,7 +16,7 @@ Install nltk components (in a python shell):
 import nltk
 nltk.download()
 ```
-Select the brown corpus and the punkt tokeniser module.
+Install the brown corpus and the punkt tokeniser modules.
 
 ## Usage
 Run:
@@ -26,4 +26,4 @@ Run:
 No parameters are required, though if this were reused to use different sources, some optional parameters would be added.
 
 ## Output
-TODO
+I am using Tkinter to output the data. It should be fairly self-explanatory, although it is somewhat ugly.
