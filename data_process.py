@@ -9,6 +9,7 @@ def files_word(file_contents, to_search):
     for word in to_search:
         files.append([])
         pattern = re.compile("[^a-z]" + word + "[^a-z]")
+        # The pattern that I use here is intended to avoid partial word matches
         for filename in sorted(file_contents.keys()):
             if pattern.search(file_contents[filename].lower()) is not None:
                 files[-1].append(filename)
