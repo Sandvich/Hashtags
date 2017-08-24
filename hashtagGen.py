@@ -10,15 +10,15 @@ def main():
     print(*to_print)
 
     # Count the frequency of each word that appears in the files, and select the top 5
-    top_unsorted = top_frequencies(word_frequencies(contents), number=5)
-    top = sorted(top_unsorted, reverse=True, key=top_unsorted.__getitem__)
+    top = top_frequencies(word_frequencies(contents), number=5)
     print("Final frequency graph:\n" + str(top))
 
     # For each word in this list, find which documents it appears in and which sentences it appears in.
-    table = [top,
+    table = [sorted(top.keys(), reverse=True, key=top.__getitem__),
              files_word(contents, top),
              sentences_word(contents, top)]
 
+    print("Building UI")
     run(table)
 
 

@@ -40,9 +40,9 @@ def sentences_word(string_contents, to_search):
     return sentences
 
 
-def list_to_string(list: list):
+def list_to_string(list_to_convert: list):
     string = ""
-    for item in list:
+    for item in list_to_convert:
         string += str(item) + "\n"
     string = string[:-1]
     return string

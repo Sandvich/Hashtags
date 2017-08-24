@@ -23,7 +23,15 @@ Run:
 ```bash
 ./hashtagGen.py
 ```
-No parameters are required, though if this were reused to use different sources, some optional parameters would be added.
+No parameters are required, though if this were reused to use different sources, some optional parameters would be
+added.
 
 ## Output
-I am using Tkinter to output the data. It should be fairly self-explanatory, although it is somewhat ugly.
+I am using Tkinter to output the data. It should be fairly self-explanatory, although it is somewhat ugly.<br>
+Tkinter is a quick and dirty graphical output. If I took more time about this, I would potentially use Flask's
+templating tools, QT or ncurses to make something not quite so ugly.<br><br>
+For some reason, the term "af" sometimes appears in the output. Given more time I would investigate this, but it seems
+to be a bug in the tokeniser. Additionally, given more time I would make a cleaner process for getting rid of dead
+words, as the method I used was very crude (see natural_language.py lines 50 onwards).<br><br>
+I didn't bother to sort the dictionary used for the frequency distribution when printing to console, though because this
+is debug information I don't think it is an issue.

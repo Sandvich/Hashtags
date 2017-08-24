@@ -23,7 +23,7 @@ def top_frequencies(frequencies, number=None, percentage=None):
         raise ValueError("Either number or percentage must be provided!")
 
     words = words[:number]
-    top = {word:frequencies[word] for word in words}
+    top = {word: frequencies[word] for word in words}
     return top
 
 
@@ -34,11 +34,13 @@ def word_frequencies(contents):
     # Frequencies for each file
     list = []
     for file in contents.keys():
+        print("Tokenising", file)
         tokenised = [toktok.tokenize(sent) for sent in sent_tokenize(string_corpus)]
         fdist = Counter(chain(*tokenised))
         list.append(fdist)
 
     # Combine keys into one set, eliminating duplicates
+    print("Making frequency distribution of all words that we care about.")
     keys = []
     for sublist in list:
         keys += sublist

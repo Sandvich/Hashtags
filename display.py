@@ -7,7 +7,11 @@ def run(data):
 
     mainframe = ttk.Frame(root, padding="3 3 12 12")
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
     mainframe.columnconfigure(0, weight=1)
+    mainframe.columnconfigure(1, weight=1)
+    mainframe.columnconfigure(2, weight=1)
     mainframe.rowconfigure(0, weight=1)
 
     ttk.Label(mainframe, text="Word").grid(row=0, column=0, sticky=W)
@@ -15,6 +19,7 @@ def run(data):
     ttk.Label(mainframe, text="Sentences").grid(row=0, column=2, sticky=W, columnspan=2)
 
     for i, word in enumerate(data[0]):
+        mainframe.rowconfigure(i+1, weight=1)
         ttk.Label(mainframe, text=word).grid(row=i+1, column=0, sticky=(N,W))
         ttk.Label(mainframe, text=data[1][i]).grid(row=i+1, column=1, sticky=(N,W))
         sentences = Text(mainframe, width=100, height=10)
